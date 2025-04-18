@@ -1,0 +1,52 @@
+.card {
+    margin-top: 2rem;
+    border-radius: 15px;
+}
+
+.shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+
+.jumbotron {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+}
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+}
+
+.alert {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.img-fluid {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}  
+
+.alert {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.img-fluid {
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}

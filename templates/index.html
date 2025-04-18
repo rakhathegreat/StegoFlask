@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <div class="jumbotron bg-white p-5 shadow">
+            <h1 class="display-4 mb-4">Steganografi Gambar Cerdas dengan DCT</h1>
+            <p class="lead mb-4">Sembunyikan pesan rahasia ke dalam gambar dengan aman dan mudah.</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 shadow">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-file-lock"></i> Embed Pesan</h5>
+                            <p class="card-text">Sembunyikan pesan rahasia dalam gambar</p>
+                            <a href="{{ url_for('embed') }}" class="btn btn-primary">Mulai Embed</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100 shadow">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-file-earmark-break"></i> Extract Pesan</h5>
+                            <p class="card-text">Ekstrak pesan tersembunyi dari gambar</p>
+                            <a href="{{ url_for('extract') }}" class="btn btn-success">Mulai Extract</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
