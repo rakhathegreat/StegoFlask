@@ -50,3 +50,7 @@
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
 }
+
+#btn-embed, #btn-extract {
+    border-radius: 0.5rem;
+}
