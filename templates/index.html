@@ -29,19 +29,5 @@
                 </div>
             </form>
         </div>
-
-        <!-- EXTRACT PANEL -->
-        <div id="extract-form" style="display: none;">
-            <form method="POST" enctype="multipart/form-data" action="{{ url_for('extract') }}">
-                <div class="mb-3">
-                    <label for="extractFile" class="form-label">Pilih Gambar Stego</label>
-                    <input class="form-control" type="file" name="file" id="extractFile" accept="image/*" required>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-outline-primary w-100">Ekstrak Pesan</button>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
 {% endblock %}

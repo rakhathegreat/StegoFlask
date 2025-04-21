@@ -21,7 +21,7 @@
     crossorigin="anonymous"></script>
 </body>
 
-<script>
+<!-- <script>
   $(document).ready(function () {
     $('#btn-embed').click(function () {
       $('#embed-form').show();
@@ -37,6 +37,17 @@
       $('#btn-embed').removeClass('btn-light').addClass('btn-outline-light');
     });
   });
-</script>
+</script> -->
 
+<script>
+  $(document).ready(function () {
+    $('#btn-embed').click(function () {
+      window.location.href = '/';
+    });
+
+    $('#btn-extract').click(function () {
+      window.location.href = '/extract';
+    });
+  });
+</script>
 </html>
