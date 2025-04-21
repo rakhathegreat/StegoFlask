@@ -2,32 +2,45 @@
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-8 text-center">
-        <div class="jumbotron bg-white p-5 shadow">
-            <h1 class="display-4 mb-4">Steganografi Gambar Cerdas dengan DCT</h1>
-            <p class="lead mb-4">Sembunyikan pesan rahasia ke dalam gambar dengan aman dan mudah.</p>
-            
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card h-100 shadow">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="bi bi-file-lock"></i> Embed Pesan</h5>
-                            <p class="card-text">Sembunyikan pesan rahasia dalam gambar</p>
-                            <a href="{{ url_for('embed') }}" class="btn btn-primary">Mulai Embed</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="card h-100 shadow">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="bi bi-file-earmark-break"></i> Extract Pesan</h5>
-                            <p class="card-text">Ekstrak pesan tersembunyi dari gambar</p>
-                            <a href="{{ url_for('extract') }}" class="btn btn-success">Mulai Extract</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-md-8">
+        <div class="jumbotron bg-dark px-5 pb-5 text-center">
+            <h1 class="display-5 text-white mb-4 fw-bold">InvisiText</h1>
+            <p class="lead mb-4 text-white-50">Sembunyikan pesan rahasia ke dalam gambar dengan aman dan mudah.</p>
+            <div class="btn-group mt-3" role="group">
+                <button id="btn-embed" type="button" class="btn btn-outline-light">🔒 Sembunyikan</button>
+                <button id="btn-extract" type="button" class="btn btn-outline-secondary">🔓 Ekstrak</button>
             </div>
+        </div>
+
+        <!-- EMBED PANEL -->
+        <div id="embed-form">
+            <form method="POST" enctype="multipart/form-data" action="{{ url_for('embed') }}">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Pilih Gambar</label>
+                    <input class="form-control" type="file" name="image" id="formFile" accept="image/*" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Pesan</label>
+                    <textarea class="form-control" name="message" id="message" rows="3"
+                        placeholder="Masukkan pesan yang ingin disembunyikan ..." required></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-outline-secondary w-100">Sembunyikan</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- EXTRACT PANEL -->
+        <div id="extract-form" style="display: none;">
+            <form method="POST" enctype="multipart/form-data" action="{{ url_for('extract') }}">
+                <div class="mb-3">
+                    <label for="extractFile" class="form-label">Pilih Gambar Stego</label>
+                    <input class="form-control" type="file" name="file" id="extractFile" accept="image/*" required>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-outline-primary w-100">Ekstrak Pesan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

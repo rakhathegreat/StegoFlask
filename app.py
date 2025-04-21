@@ -31,19 +31,18 @@ def index():
 
 @app.route('/embed', methods=['GET', 'POST'])
 def embed():
-    stego_image_filename = None
     if request.method == 'POST':
-        if 'file' not in request.files or 'message' not in request.form:
+        if 'image' not in request.files or 'message' not in request.form:
             flash('Harap upload gambar dan masukkan pesan')
             return redirect(request.url)
-        
-        file = request.files['file']
+
+        file = request.files['image']
         message = request.form['message']
-        
+
         if file.filename == '' or message == '':
             flash('File atau pesan tidak valid')
             return redirect(request.url)
-        
+
         try:
             # Read image
             in_memory_file = io.BytesIO()
@@ -90,30 +89,20 @@ def embed():
             stego_image_BGR = cv2.cvtColor(stego_image, cv2.COLOR_YCR_CB2BGR)
             final_stego_image = np.uint8(np.clip(stego_image_BGR, 0, 255))
 
-            # flash("Pesan berhasil disematkan!", "success")
-            # # Return result
-            # img_bytes = image_to_bytes(final_stego_image)
-            # return send_file(
-            #     img_bytes,
-            #     mimetype='image/png',
-            #     as_attachment=True,
-            #     download_name='stego_image.png'
-            # )
-            
-            # Simpan ke folder static/uploads
-            filename = secure_filename("stego_image.png")
-            save_path = os.path.join(UPLOAD_FOLDER, filename)
-            cv2.imwrite(save_path, final_stego_image)
+            # Return result directly as download
+            img_bytes = image_to_bytes(final_stego_image)
+            return send_file(
+                img_bytes,
+                mimetype='image/png',
+                as_attachment=True,
+                download_name='stego_image.png'
+            )
 
-            flash("Pesan berhasil disematkan!", "success")
-            stego_image_filename = filename
-        
         except Exception as e:
             flash(f'Error: {str(e)}', 'danger')
             return redirect(request.url)
 
-    return render_template('embed.html', stego_image=stego_image_filename)
-
+    return render_template('index.html')
 @app.route('/extract', methods=['GET', 'POST'])
 def extract():
     if request.method == 'POST':
